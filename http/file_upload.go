@@ -10,7 +10,7 @@ import (
 	"os"
 )
  //模拟客户端上传文件
-func postFile(filename string, targetUrl string) error {
+func PostFile(filename string, targetUrl string) error {
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
 
