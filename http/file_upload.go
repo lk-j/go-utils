@@ -8,13 +8,18 @@ import (
 	"net/http"
 	"os"
 )
- //模拟客户端上传文件
-func PostFile(filename string, targetUrl string) (string,error) {
+ /*
+  *  模拟客户端上传单文件
+  * filename 文件名
+  * targetUrl 目标地址
+  * 文件参数
+  */
+func PostFile(filename,targetUrl,query string) (string,error) {
 	bodyBuf := &bytes.Buffer{}
 	bodyWriter := multipart.NewWriter(bodyBuf)
 
 	//关键的一步操作
-	fileWriter, err := bodyWriter.CreateFormFile("uploadfile", filename)
+	fileWriter, err := bodyWriter.CreateFormFile(query, filename)
 	if err != nil {
 		return "",err
 	}
